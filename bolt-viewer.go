@@ -3,12 +3,16 @@ package main
 import (
 	"fmt"
 	"log"
+	"os"
 
 	bolt "github.com/coreos/bbolt"
 )
 
 func main() {
-	viewDB("path/to/boltdb/file")
+	if len(os.Args) != 2 {
+		os.Exit(1)
+	}
+	viewDB(os.Args[1])
 }
 
 func viewDB(path string) {
